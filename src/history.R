@@ -1,0 +1,512 @@
+write.csv(Euclidean_distance, file = "/wdata/rotating_students/yonghuang/data/Euclidean_feature.csv")
+boxplot(rf$votes[,2]~subfeatures[,2])
+fit <- lm(formula = Epilepsy.status~rf$votes[,"TRUE"],data = subfeatures)
+summary(fit)
+fit <- lm(formula = Epilepsy.status~Autism.reported.+Language.impair+ID,data = subfeatures) # rf$votes[,"TRUE"]+
+summary(fit)
+fit$residuals
+fit <- lm(formula = rf$votes[,"TRUE"]~Autism.reported.+Language.impair+ID,data = subfeatures) # rf$votes[,"TRUE"]+
+summary(fit)
+fit$residuals
+tmp = fit$residuals
+boxplot(tmp~subfeatures$Epilepsy.status)
+lm(tmp~subfeatures$Epilepsy.status)
+summary(lm(tmp~subfeatures$Epilepsy.status))
+boxplot(rf$votes[,2]~subfeatures[,2])
+boxplot(tmp~subfeatures$Epilepsy.status)
+View(subfeatures)
+View(prediction_label)
+View(facial_feature)
+View(Euclidean_distance_importance)
+table(new_features$Affected.status,prediction_label)
+boxplot(tmp~subfeatures$Epilepsy.status)
+boxplot(tmp~subfeatures$Epilepsy.status,xlab = "Residual", ylab = "Epilepsy status")
+boxplot(tmp~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+fit_rf <- lm(formula = Epilepsy.status~rf$votes[,"TRUE"]+Autism.reported.+Language.impair+ID,data = subfeatures)
+boxplot(fit_rf~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(rf$votes[,2]~subfeatures[,2])
+boxplot(rf$votes[,2]~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp+rf$votes[,2]~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp+rf$votes[,2]~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(rf$votes[,2]~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(rf$votes[,2]~subfeatures$Epilepsy.status,tmp~subfeatures$Epilepsy,ylab = "Residual", xlab = "Epilepsy status")
+library(reshape2)
+rect(c(1.4, 6.4), boxplot(tmp~subfeatures$Epilepsy.status), c(2.2, 7.2), boxplot(rf$votes[,2]~subfeatures$Epilepsy.status), density=12, angle=45)
+boxplot(subfeatures$Epilepsy.status~tmp+rf$votes[,2],ylab = "Residual", xlab = "Epilepsy status")
+dev.off()
+boxplot(rf$votes[,2]~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(subfeatures$Epilepsy.status~tmp+rf$votes[,2],ylab = "Residual", xlab = "Epilepsy status")
+t <- cbind(rf$votes,tmp)
+boxplot(t~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+View(t)
+t <- cbind(rf$votes[,2],tmp)
+View(t)
+boxplot(t~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(t~subfeatures$Epilepsy.status+subfeatures[,2],ylab = "Residual", xlab = "Epilepsy status")
+boxplot(t~subfeatures$Epilepsy.status+subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(t~subfeatures$Epilepsy.status+subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(subfeatures$Epilepsy.status~t,ylab = "Residual", xlab = "Epilepsy status")
+attach(mtcars)
+par(mfrow=c(2,2))
+boxplot(tmp~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(rf$votes[,2]~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+t <-rf$votes+tmp
+View(t)
+t <-rf$votes[,2]+tmp
+t <-cbind(rf$votes[,2],tmp)
+stack(t)
+require(stats)
+stack(t)
+View(t)
+as.factor(t)
+t <-data.frame(cbind(rf$votes[,2],tmp))
+stack(t)
+t <-data.frame(cbind(rf$votes[,2],tmp))
+t <-stack(t)
+View(t)
+t_f<-data.frame(cbind(subfeatures$Epilepsy.status,subfeatures$Epilepsy.status))
+View(t_f)
+t_f<-stack(t_f)
+View(t_f)
+t<-t[,-2]
+t <-data.frame(cbind(rf$votes[,2],tmp))
+t <-stack(t)
+t<-data.frame(t[,-2])
+t_f<-data.frame(t_f[,-2])
+View(t)
+View(t_f)
+View(t)
+boxplot(t~t_f,ylab = "Residual", xlab = "Epilepsy status")
+View(t)
+boxplot(t ~ t_f,ylab = "Residual", xlab = "Epilepsy status")
+typeof(subfeatures[,3])
+typeof(t)
+typeof(rf$votes[,2])
+t <-data.frame(cbind(rf$votes[,2],tmp))
+t <-stack(t)
+t<-t[,-2]
+t_f<-data.frame(cbind(subfeatures$Epilepsy.status,subfeatures$Epilepsy.status))
+t_f<-stack(t_f)
+t_f<-t_f[,-2]
+boxplot(t ~ t_f,ylab = "Residual", xlab = "Epilepsy status")
+t <-cbind(rf$votes[,2],tmp)
+t_f<-gsub("",".",subfeatures[,3])
+boxplot(t ~subfeatures$Epilepsy.status+t_f ,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp ~ subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+tmp
+tmp[1,0]
+tmp[1,1]
+typeof(tmp)
+tmp <- data.frame(tmp)
+View(tmp)
+View(subfeatures)
+grep("TRUE",subfeatures[,3])
+linearM_result_T <-tmp[grep("TRUE",subfeatures[,3]),]
+linearM_result_F <-tmp[grep("FALSE",subfeatures[,3]),]
+rf$votes
+predicted_T <- rf$votes[grep("TRUE",subfeatures[,3]),2]
+predicted_F <- rf$votes[grep("FALSE",subfeatures[,3]),2]
+row.names(linearM_result_T)
+new_features[row.names(linearM_result_T),6] <- "linearM_result_T"
+View(new_features)
+tmp[grep("TRUE",subfeatures[,3]),2]<-"linearM_result_T"
+tmp[grep("FALSE",subfeatures[,3]),]<-"linearM_result_F"
+tmp <- data.frame(tmp)
+tmp[grep("TRUE",subfeatures[,3]),2]<-"linearM_result_T"
+tmp[grep("FALSE",subfeatures[,3]),2]<-"linearM_result_F"
+tmp = fit$residuals
+tmp <- data.frame(tmp)
+tmp[grep("TRUE",subfeatures[,3]),2]<-"linearM_result_T"
+tmp[grep("FALSE",subfeatures[,3]),2]<-"linearM_result_F"
+rfvotes <-rf$votes[,2]
+rfvotes
+rfvotes <-data.frame(rf$votes[,2])
+View(rfvotes)
+rfvotes[grep("TRUE",subfeatures[,3]),2] <-"True(rfvotes)"
+rfvotes[grep("FALSE",subfeatures[,3]),2] <-"False(rfvotes)"
+View(rfvotes)
+t <- stack(tmp,rfvotes)
+tmp
+t <- stack(as.numeric(tmp[,1]),as.numeric(rfvotes[,1]))
+View(rfvotes)
+View(t)
+View(rfvotes)
+boxplot(t~rfvotes[,2]+tmp[,2])
+t <- stack(as.double(tmp[,1]),as.double(rfvotes[,1]))
+t1 <- stack(as.double(tmp[,1]),as.double(rfvotes[,1]))
+typeof(tmp[,1])
+tmp = fit$residuals
+tmp <- data.frame(tmp)
+tmp[grep("TRUE",subfeatures[,3]),2]<-"linearM_result_T"
+tmp[grep("FALSE",subfeatures[,3]),2]<-"linearM_result_F"
+rfvotes <-data.frame(rf$votes[,2])
+rfvotes[grep("TRUE",subfeatures[,3]),2] <-"True(rfvotes)"
+rfvotes[grep("FALSE",subfeatures[,3]),2] <-"False(rfvotes)"
+typeof(tmp[,1])
+t1 <- stack(tmp[,1],rfvotes[,1])
+t<-matrix(0,ncol = 1544,2)
+t<- stack(tmp[,1],rfvotes[,1])
+t[,1]<- stack(tmp[,1],rfvotes[,1])
+View(t)
+t<-matrix(0,ncol =2,nrol=1544)
+t[,1]<- stack(tmp[,1],rfvotes[,1])
+View(t)
+t<-matrix(0,ncol =2,nrol=1544)
+t<-matrix(0,ncol =2,nrow=1544)
+t[,1]<- stack(tmp[,1],rfvotes[,1])
+View(t)
+tmp[,1]<- stack(tmp[,1],rfvotes[,1])
+tmp[,2] <- rfvotes[,1]
+tmp = fit$residuals
+tmp <- data.frame(tmp)
+tmp[grep("TRUE",subfeatures[,3]),2]<-"linearM_result_T"
+tmp[grep("FALSE",subfeatures[,3]),2]<-"linearM_result_F"
+rfvotes <-data.frame(rf$votes[,2])
+rfvotes[grep("TRUE",subfeatures[,3]),2] <-"True(rfvotes)"
+rfvotes[grep("FALSE",subfeatures[,3]),2] <-"False(rfvotes)"
+t<-matrix(0,ncol =2,nrow=1544)
+rfvotes[,1] <-tmp[,2]
+tmp[,2] <- rf$votes[,2]
+rfvotes <-stack(rfvotes)
+tmp <-stack(tmp)
+feature <- cbind(rfvotes,tmp)
+View(feature)
+feature <-feature[,-2]
+feature <-feature[,-4]
+feature <-feature[,-3]
+boxplot(feature[,2]~ feature[,1],ylab = "Residual", xlab = "Epilepsy status")
+tmp2 = fit$residuals
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(rf$votes[,2]~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(feature[,2]~ feature[,1],ylab = "Residual", xlab = "Epilepsy status")
+factor(feature[,1])
+feature<- factor(feature[,1], levels = c("False(rfvotes),True(rfvotes),linearM_result_F,linearM_result_T"))
+boxplot(feature[,2]~ feature[,1],ylab = "Residual", xlab = "Epilepsy status")
+View(female)
+feature <- cbind(rfvotes,tmp)
+feature <-feature[,-2]
+feature <-feature[,-3]
+View(feature)
+feature[,1]<- factor(feature[,1], levels = c("False(rfvotes),True(rfvotes),linearM_result_F,linearM_result_T"))
+feature <- cbind(rfvotes,tmp)
+feature <-feature[,-2]
+feature <-feature[,-3]
+boxplot(feature[,2]~ feature[,1],ylab = "Residual", xlab = "Epilepsy status",col= c("False(rfvotes),True(rfvotes),linearM_result_F,linearM_result_T"))
+boxplot(feature[,2]~ feature[,1],ylab = "Residual", xlab = "Epilepsy status",col= c("False(rfvotes)","True(rfvotes)","linearM_result_F","linearM_result_T"))
+feature$factor<- factor(feature[,1], levels = c("False(rfvotes)","True(rfvotes)","linearM_result_F","linearM_result_T"))
+boxplot(feature[,2]~ feature[,1],ylab = "Residual", xlab = "Epilepsy status")
+feature<- factor(feature[,1], levels = c("False(rfvotes)","True(rfvotes)","linearM_result_F","linearM_result_T"))
+feature <- cbind(rfvotes,tmp)
+feature <-feature[,-2]
+feature <-feature[,-3]
+prediction_label <-as.character(prediction_set > 0.4744243)
+#prediction_label <-as.character(prediction_set > 0.5422379)
+#prediction_label <-as.character(prediction_set >0.4499703) --(non_strata)
+accuracy <- sum(prediction_label == test_label) / length(test_label)
+male <- new_features[grep("Male",new_features[,2]),]
+female <- new_features[grep("Female",new_features[,2]),]
+affected_m <- male[grep("TRUE",male[,4]),]
+unaffected_m <-male[grep("FALSE",male[,4]),]
+affected_fm <- female[grep("TRUE",female[,4]),]
+unaffected_fm <- female[grep("FALSE",female[,4]),]
+new_features[row.names(affected_m),5] <- "affected_m"
+new_features[row.names(unaffected_m),5] <- "unaffected_m"
+new_features[row.names(affected_fm),5] <- "affected_fm"
+new_features[row.names(unaffected_fm),5] <- "unaffected_fm"
+sex_status <- factor(new_features[,5], levels = c("unaffected_fm","affected_fm","unaffected_m","affected_m"))
+feature$factor<- factor(feature[,1], levels = c("False(rfvotes)","True(rfvotes)","linearM_result_F","linearM_result_T"))
+boxplot(feature[,2]~ feature$factor,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(feature[,2]~ feature$factor,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(feature[,2]~ feature$factor, xlab = "Epilepsy status")
+png('/wdata/rotating_students/yonghuang/data/EpilepsyResult_compare.png',1520,1200)
+boxplot(feature[,2]~ feature$factor, xlab = "Epilepsy status")
+dev.off()
+png('/wdata/rotating_students/yonghuang/data/EpilepsyResult_compare.png',1440,900)
+boxplot(feature[,2]~ feature$factor, xlab = "Epilepsy status")
+dev.off()
+fit <- lm(formula = Epilepsy.status~Autism.reported.+Language.impair+ID,data = subfeatures) # rf$votes[,"TRUE"]+
+summary(fit)
+fit_no_votes <- lm(formula = Epilepsy.status~Autism.reported.+Language.impair+ID,data = subfeatures) # rf$votes[,"TRUE"]+
+tmp = fit_no_votes$residuals
+tmp2 = fit_no_votes$residuals
+tmp <- data.frame(tmp)
+tmp[grep("TRUE",subfeatures[,3]),2]<-"linearM_result_T"
+tmp[grep("FALSE",subfeatures[,3]),2]<-"linearM_result_F"
+rfvotes <-data.frame(rf$votes[,2])
+rfvotes[grep("TRUE",subfeatures[,3]),2] <-"True(rfvotes)"
+rfvotes[grep("FALSE",subfeatures[,3]),2] <-"False(rfvotes)"
+t<-matrix(0,ncol =2,nrow=1544)
+rfvotes[,1] <-tmp[,2]
+tmp[,2] <- rf$votes[,2]
+rfvotes <-stack(rfvotes)
+tmp <-stack(tmp)
+feature <- cbind(rfvotes,tmp)
+feature <-feature[,-2]
+feature <-feature[,-3]
+feature$factor<- factor(feature[,1], levels = c("False(rfvotes)","True(rfvotes)","linearM_result_F","linearM_result_T"))
+boxplot(feature[,2]~ feature$factor, xlab = "Epilepsy status")
+summary(fit_no_votes)
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+tmp2 = fit_no_votes$residuals
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+fit_no_votes <- lm(formula = Epilepsy.status~Autism.reported.+Language.impair+ID,data = subfeatures) # rf$votes[,"TRUE"]+
+View(tmp)
+tmp2 = fit_no_votes$residuals
+View(tmp)
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+fit <- lm(formula = Epilepsy.status~Autism.reported.+Language.impair+ID,data = subfeatures) # rf$votes[,"TRUE"]+
+tmp2 = fit$residuals
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+View(subfeatures)
+summary(fit)
+tmp = fit$residuals
+boxplot(tmp~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+library(randomForest)
+library(pROC)
+set.seed(42)
+new_features <- read.csv('/wdata/rotating_students/yonghuang/data/sub_features.csv')
+update_feature.scale <- read.csv('/wdata/rotating_students/yonghuang/data/scaled_features.csv')
+subfeatures<- read.csv('/wdata/rotating_students/yonghuang/data/subfeatures(merged).csv')
+rownames(update_feature.scale) <- update_feature.scale[,1]
+update_feature.scale <- update_feature.scale[,-1]
+rownames(subfeatures) <-subfeatures[,1]
+subfeatures[,1] <-NULL
+for(i in 1:nrow(subfeatures)){
+  if(is.na(subfeatures[i,1])){
+    subfeatures[i,1]<-FALSE
+  }
+  if(is.na(subfeatures[i,2])){
+    subfeatures[i,2]<-FALSE
+  }
+  if(is.na(subfeatures[i,3])){
+    subfeatures[i,3]<-FALSE
+  }
+  if(is.na(subfeatures[i,4])){
+    subfeatures[i,4]<-FALSE
+  }
+}
+count <- matrix(0,ncol= 1,nrow= 772)
+for(m in 1:nrow(subfeatures)){
+  count[m,1]<-sum(subfeatures[m,] == TRUE)
+}
+count <-cbind(rownames(subfeatures),count[,1])
+rownames(count)<-count[,1]
+count <- data.frame(count[,-1])
+prediction_label <-matrix(0,nrow = nrow(update_feature.scale),ncol = 1)
+test_label <- as.character(new_features$Affected.status)
+### get Euclidean distances between facial landmarks
+update_feature.scale_distance = t(apply(update_feature.scale,1,function(x) as.numeric(dist(matrix(x,12,2,byrow=T)))))
+### randomforest sampling
+rf = randomForest(y=factor(new_features$Affected.status),x=update_feature.scale_distance,strata=as.factor(new_features$Affected.status),sampsize=c(283,283),ntree=5000)
+#rf = randomForest(y=factor(new_features$Affected.status),x=update_feature.scale_distance,ntree=5000)
+face = lm(rf$votes[,2]~new_features$Affected.status)
+prediction_set <- rf$votes[,2]
+### labeling the facial features
+facial_feature <- matrix(0,nrow = 12,ncol = 1)
+l=1
+facial_feature[l,1] <- as.character(gsub("_x","",colnames(update_feature.scale)[1]))
+for(l in 1:11) {
+  facial_feature[l+1,1] <- as.character(gsub("_x","",colnames(update_feature.scale)[2*l+1]))
+}
+Euclidean_distance <- matrix(0,nrow =  66,ncol = 1)
+i = 1
+k=1
+for (i in 1:(nrow(facial_feature)-1)){
+  for(j in (i+1):12){
+    Euclidean_distance[k,1] <-  paste(facial_feature[i,1],"to",facial_feature[j,1])
+    k <-k+1
+  }
+}
+Euclidean_distance_importance <- cbind(Euclidean_distance,rf$importance)
+colnames(Euclidean_distance_importance) <- c("Euclidean_distance",colnames(Euclidean_distance_importance)[2])
+subfeatures <-cbind(rf$votes[,"TRUE"],subfeatures)
+########################################################################## Linear regression model
+fit <- lm(formula = Epilepsy.status~Autism.reported.+Language.impair+ID,data = subfeatures) # rf$votes[,"TRUE"]+
+fit_rf <- lm(formula = Epilepsy.status~rf$votes[,"TRUE"]+Autism.reported.+Language.impair+ID,data = subfeatures)
+fit1 <- lm(formula = Autism.reported.~rf$votes[,"TRUE"]+Epilepsy.status+Language.impair+ID,data = subfeatures)
+fit2<- lm(formula = Language.impair~rf$votes[,"TRUE"]+Autism.reported.+Epilepsy.status+ID,data = subfeatures)
+fit3<- lm(formula = ID~rf$votes[,"TRUE"]+Autism.reported.+Language.impair+Epilepsy.status,data = subfeatures)
+tmp = fit$residuals
+tmp2 = fit$residuals
+summary(fit)
+summary(fit1)
+summary(fit2)
+summary(fit3)
+tmp <- data.frame(tmp)
+tmp[grep("TRUE",subfeatures[,3]),2]<-"linearM_result_T"
+tmp[grep("FALSE",subfeatures[,3]),2]<-"linearM_result_F"
+rfvotes <-data.frame(rf$votes[,2])
+rfvotes[grep("TRUE",subfeatures[,3]),2] <-"True(rfvotes)"
+rfvotes[grep("FALSE",subfeatures[,3]),2] <-"False(rfvotes)"
+t<-matrix(0,ncol =2,nrow=1544)
+rfvotes[,1] <-tmp[,2]
+tmp[,2] <- rf$votes[,2]
+rfvotes <-stack(rfvotes)
+tmp <-stack(tmp)
+feature <- cbind(rfvotes,tmp)
+feature <-feature[,-2]
+feature <-feature[,-3]
+feature$factor<- factor(feature[,1], levels = c("False(rfvotes)","True(rfvotes)","linearM_result_F","linearM_result_T"))
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(rf$votes[,2]~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+tmp2 = fit$df.residual
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+tmp2 = fit$residuals
+df.
+tmp2 = fit$df.residual
+tmp2 = fit$residuals
+summary(fit)
+boxplot(feature[,2]~ feature$factor, xlab = "Epilepsy status")
+residuals
+tmp = fit$residuals
+tmp <- data.frame(tmp)
+tmp[grep("TRUE",subfeatures[,3]),2]<-"linearM_result_T"
+tmp[grep("FALSE",subfeatures[,3]),2]<-"linearM_result_F"
+rfvotes <-data.frame(rf$votes[,2])
+rfvotes[grep("TRUE",subfeatures[,3]),2] <-"True(rfvotes)"
+rfvotes[grep("FALSE",subfeatures[,3]),2] <-"False(rfvotes)"
+t<-matrix(0,ncol =2,nrow=1544)
+rfvotes[,1] <-tmp[,2]
+tmp[,2] <- rf$votes[,2]
+rfvotes <-stack(rfvotes)
+tmp <-stack(tmp)
+feature <- cbind(rfvotes,tmp)
+feature <-feature[,-2]
+feature <-feature[,-3]
+feature$factor<- factor(feature[,1], levels = c("False(rfvotes)","True(rfvotes)","linearM_result_F","linearM_result_T"))
+View(tmp)
+boxplot(feature[,2]~ feature$factor, xlab = "Epilepsy status")
+boxplot(feature[,2]~ feature$factor, xlab = "Epilepsy status")
+abline(h = 2.5, col = "green")
+abline(h = 2, col = "green")
+#png('/wdata/rotating_students/yonghuang/data/EpilepsyResult_compare.png',1440,900)
+boxplot(feature[,2]~ feature$factor, xlab = "Epilepsy status")
+abline(h = 2, col = "green")
+boxplot(1:10)
+abline(h = 4, col = "red")
+abline(h = 0.9, col = "red")
+boxplot(feature[,2]~ feature$factor, xlab = "Epilepsy status")
+abline(h = 0.9, col = "red")
+boxplot(feature[,2]~ feature$factor, xlab = "Epilepsy status")
+ggplot(feature, aes(x=feature[,2], y=feature$factor)) + geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE)
+library(ggplot2)
+library(ggsignif)
+ggplot(feature, aes(x=feature[,2], y=feature$factor)) + geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE)
+library(ggsignif)
+install.packages("ggsignif""")
+install.packages("ggsignif")
+library(ggsignif)
+ggplot(feature, aes(x=feature[,2], y=feature$factor)) + geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE)
+ggplot(feature, aes(x=feature$factor, y=feature[,2])) + geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE)
+ggplot(feature, aes(x=feature$factor, y=feature[,2])) + geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE)
+?aes
+ggplot(feature, aes(x=feature$factor, y=feature[,2])) + geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE)
+ggplot(feature, aes(x=feature$factor, y=feature[,2]),xlab="dd") + geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE)
+ggplot(feature, aes(x=feature$factor, y=feature[,2])) + geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE,xlab="dd")
+ggplot(feature, aes(x=feature$factor, y=feature[,2]),xlab = "fd",ylab ="ds") + geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE)
+ggplot(feature, aes(x=feature$factor, y=feature[,2],xlab = "fd",ylab ="ds")) + geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE)
+ggplot(feature, aes(x=feature$factor, y=feature[,2])) +labs(x="dd",y="dd")+ geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE)
+ggplot(feature, aes(x=feature$factor, y=feature[,2])) +labs(x="dd",y="dd")+ geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE)
+ggplot(feature, aes(x=feature$factor, y=feature[,2])) +labs(x="Epilepsy status",y=" ")+ geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)")),map_signif_level=TRUE)
+ggplot(feature, aes(x=feature$factor, y=feature[,2])) +labs(x="Epilepsy status",y=" ")+ geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)","linearM_result_F","linearM-result_T")),map_signif_level=TRUE)
+ggplot(feature, aes(x=feature$factor, y=feature[,2])) +labs(x="Epilepsy status",y=" ")+ geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)","linearM_result_F","linearM_result_T")),map_signif_level=TRUE)
+ggplot(feature, aes(x=feature$factor, y=feature[,2])) +labs(x="Epilepsy status",y=" ")+ geom_boxplot() +geom_signif(comparisons = list(c("linearM_result_F","linearM_result_T")),map_signif_level=TRUE)
+ggplot(feature, aes(x=feature$factor, y=feature[,2])) +labs(x="Epilepsy status",y=" ")+ geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)"),c("linearM_result_F","linearM_result_T")),map_signif_level=TRUE)
+fit <- lm(formula = Epilepsy.status~Autism.reported.+Language.impair+ID,data = subfeatures) # rf$votes[,"TRUE"]+
+tmp = fit$residuals
+boxplot(tmp~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+summary(fit)
+tmp
+tmp2 = fit_rf$residuals
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+feature
+boxplot(feature[,2]~ feature$factor, xlab = "Epilepsy status")
+ggplot(feature, aes(x=feature$factor, y=feature[,2])) +labs(x="Epilepsy status",y=" ")+ geom_boxplot() +geom_signif(comparisons = list(c("False(rfvotes)", "True(rfvotes)"),c("linearM_result_F","linearM_result_T")),map_signif_level=TRUE)
+boxplot(tmp2~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp2~subfeatures$Autism.reported.,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp2~subfeatures$Language.impair,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp~subfeatures$Language.impair,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+View(subfeatures)
+boxplot(rf$votes[,2]~sex_status,main="Probability of affected status from different sex group",ylab="Probability of affected status")
+prediction_label <-as.character(prediction_set > 0.4744243)
+#prediction_label <-as.character(prediction_set > 0.5422379)
+#prediction_label <-as.character(prediction_set >0.4499703) --(non_strata)
+accuracy <- sum(prediction_label == test_label) / length(test_label)
+male <- new_features[grep("Male",new_features[,2]),]
+female <- new_features[grep("Female",new_features[,2]),]
+affected_m <- male[grep("TRUE",male[,4]),]
+unaffected_m <-male[grep("FALSE",male[,4]),]
+affected_fm <- female[grep("TRUE",female[,4]),]
+unaffected_fm <- female[grep("FALSE",female[,4]),]
+new_features[row.names(affected_m),5] <- "affected_m"
+new_features[row.names(unaffected_m),5] <- "unaffected_m"
+new_features[row.names(affected_fm),5] <- "affected_fm"
+new_features[row.names(unaffected_fm),5] <- "unaffected_fm"
+sex_status <- factor(new_features[,5], levels = c("unaffected_fm","affected_fm","unaffected_m","affected_m"))
+boxplot(rf$votes[,2]~sex_status,main="Probability of affected status from different sex group",ylab="Probability of affected status")
+fit <- lm(formula = Epilepsy.status~Autism.reported.+Language.impair+ID,data = subfeatures) # rf$votes[,"TRUE"]+
+summary(fit)
+tmp = fit$residuals
+boxplot(tmp~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(rf$votes[,2]~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+tmp <- data.frame(tmp)
+boxplot(tmp~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+boxplot(tmp~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+View(tmp)
+boxplot(tmp[,1]~subfeatures$Epilepsy.status,ylab = "Residual", xlab = "Epilepsy status")
+rm(list=ls())
+rm(list=ls())
+plot(1,2,3,4)
+plot(1,2)
+require(EBImage)
+install.packages('EBImage')
+source("https://bioconductor.org/biocLite.R")
+biocLite("EBImage")
+require(EBImage)
+install.packages('fftwtools')
+biocLite("fftwtools")
+library(LiblineaR)
+set.seed(42)
+new_features <- read.csv('/wdata/rotating_students/yonghuang/data/sub_features.csv')
+update_feature.scale <- read.csv('/wdata/rotating_students/yonghuang/data/scaled_features.csv')
+# Number of folds/rounds
+nfolds = 10
+# Generate random index
+idx = sample(1:nfolds,nrow(update_feature.scale),replace=TRUE)
+rownames(update_feature.scale) <- update_feature.scale[,1]
+update_feature.scale <- update_feature.scale[,-1]
+accuracy <-matrix(0,nrow = 10,ncol = 1)
+prediction_set <- matrix(0,nrow = nrow(update_feature.scale),ncol = 2)
+#Initialize the label for later accuracy calculation
+prediction_label <-matrix(0,nrow = nrow(update_feature.scale),ncol = 1)
+test_label <- as.character(new_features$Affected.status)
+### get Euclidean distances between facial landmarks
+update_feature.scale_distance = t(apply(update_feature.scale,1,function(x) as.numeric(dist(matrix(x,12,2,byrow=T)))))
+for(fold in 1:nfolds){
+  val.idx = which(idx == fold)
+  update_feature.scale.val = update_feature.scale_distance[val.idx,]
+  update_feature.scale.train = update_feature.scale_distance[-val.idx,]
+  new_features.sex.train = new_features[match(row.names(update_feature.scale.train),new_features[,1]),]
+  new_features.sex.val = new_features[match(row.names(update_feature.scale.val),new_features[,1]),]
+  #test_label <- as.character(new_features.sex.val$Affected.status)
+  m.svm <- LiblineaR(data=update_feature.scale.train, target=new_features.sex.train$Affected.status,cost = 100,type = 6) #type=0 corresponds to the common SVM formulation.
+  prediction_set[val.idx,1] <- predict(m.svm,newx = update_feature.scale.val,proba = TRUE)$probabilities[,1]
+  prediction_set[val.idx,2] <- predict(m.svm,newx = update_feature.scale.val,proba = TRUE)$probabilities[,2]
+  #  prediction_set[val.idx,1] <- predict(m.svm,newx = update_feature.scale.val,proba = TRUE,decisionValues = TRUE)$decisionValues[,1]
+  #  prediction_set[val.idx,2] <- predict(m.svm,newx = update_feature.scale.val,proba = TRUE,decisionValues = TRUE)$decisionValues[,2]
+  prediction_label[val.idx,1] <- as.character(prediction_set[val.idx,1] < 0.5264888)
+  #  prediction_label[val.idx,1] <- as.character(predict(m.svm,newx = update_feature.scale.val)$predictions)
+  #prediction <-as.character(predict(m.svm,newx = update_feature.scale.val)$predictions)
+  #accuracy[fold] <- sum(prediction == test_label) / length(test_label)
+}
+View(new_features)
+View(new_features.sex.val)
+table(new_features$Affected.status,prediction_label)
+accuracy <- sum(prediction_label == test_label) / length(test_label)
+predict(m.svm,newx = update_feature.scale.val,proba = TRUE)$probabilities
