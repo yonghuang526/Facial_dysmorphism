@@ -2,9 +2,13 @@ library(randomForest)
 library(pROC)
 set.seed(42)
 
-subfeatures<- read.csv('/wdata/rotating_students/yonghuang/data/subfeatures(merged).csv')
-new_features <- read.csv('/wdata/rotating_students/yonghuang/data/sub_features.csv')
-update_feature.scale <- read.csv('/wdata/rotating_students/yonghuang/data/scaled_features.csv')
+#subfeatures<- read.csv('/wdata/rotating_students/yonghuang/data/subfeatures(merged).csv')
+#new_features <- read.csv('/wdata/rotating_students/yonghuang/data/sub_features.csv')
+#update_feature.scale <- read.csv('/wdata/rotating_students/yonghuang/data/scaled_features.csv')
+
+subfeatures <- read.csv('/Users/Robinhuang/Sites/Facial_dysmorphism/data/subfeatures(merged).csv')
+new_features <- read.csv('/Users/Robinhuang/Sites/Facial_dysmorphism/data/sub_features.csv')
+update_feature.scale <- read.csv('/Users/Robinhuang/Sites/Facial_dysmorphism/data/scaled_features.csv')
 rownames(update_feature.scale) <- update_feature.scale[,1]
 update_feature.scale <- update_feature.scale[,-1]
 
@@ -38,14 +42,19 @@ sex_status <- factor(new_features[,5], levels = c("unaffected_fm","affected_fm",
 
 
 plot.roc(new_features$Affected.status,rf$votes[,2],percent=TRUE,partial.auc=c(100, 90),print.auc=TRUE,print.auc.pattern="Corrected pAUC (100-90%% SP):\n%.1f%%", print.auc.col="#1c61b6",auc.polygon=TRUE, auc.polygon.col="#1c61b6",max.auc.polygon=TRUE, max.auc.polygon.col="#1c61b622", main="Partial AUC (pAUC)")
+#rocobj2 <- plot.roc(new_features$Affected.status,rf$votes[,2], main="Statistical comparison", percent=TRUE, col="#000000")
+rocobj2 <- lines.roc(new_features$Affected.status,rf$votes[,2], percent=TRUE, col="#008600",print.thres = "best")
+
+coords(rocobj2,"b",ret=c("threshold", "specificity", "sensitivity"),as.list=FALSE, drop=TRUE, best.method=c( "youden","closest.topleft"),best.weights=c(1, 0.3))
 
 #boxplot(rf$votes[,2]~sex_status)
 
-png('/wdata/rotating_students/yonghuang/data/Affected_Status_test.png',1520,1200)
+#png('/wdata/rotating_students/yonghuang/data/Affected_Status_test.png',1520,1200)
 
 boxplot(rf$votes[,2]~sex_status,col = c("#FFA07A","#FF6347","#FF7F50", "#FF0000"),main= "Probability of affected status from different sex group",ylab = "Probability of affected status")
 
 #dev.off()
+
 
 
 ############################################################################## Count and plot number of disorders
@@ -98,6 +107,7 @@ Euclidean_distance_importance <- cbind(Euclidean_distance,rf$importance)
 colnames(Euclidean_distance_importance) <- c("Euclidean_distance",colnames(Euclidean_distance_importance)[2])
 subfeatures <-cbind(rf$votes[,"TRUE"],subfeatures)
 
+subfeatures <- cbind(subfeatures,new_features[,2:3])
 ########################################################################## Linear regression model on subfeatures
 library(ggsignif)
 library(ggplot2)
@@ -105,20 +115,32 @@ fit <- lm(formula = Epilepsy.status~Autism.reported.+Language.impair+ID,data = s
 fit <- lm(formula = rf$votes[,"TRUE"]~fit$residuals)
 fit_rf <- lm(formula = Epilepsy.status~rf$votes[,"TRUE"]+Autism.reported.+Language.impair+ID,data = subfeatures)
 fit1 <- lm(formula = Autism.reported.~rf$votes[,"TRUE"]+Epilepsy.status+Language.impair+ID,data = subfeatures)
+fit1 <- lm(formula = rf$votes[,"TRUE"]~fit$residuals)
+
 fit2<- lm(formula = Language.impair~rf$votes[,"TRUE"]+Autism.reported.+Epilepsy.status+ID,data = subfeatures)
+fit2 <- lm(formula = rf$votes[,"TRUE"]~fit$residuals)
+
 fit3<- lm(formula = ID~rf$votes[,"TRUE"]+Autism.reported.+Language.impair+Epilepsy.status,data = subfeatures)
-tmp = fit$residuals
+fit3 <- lm(formula = rf$votes[,"TRUE"]~fit$residuals)
+
+fit_sex_age <- lm(formula = rf$votes[,"TRUE"]~Sex+Age,data = subfeatures)
+
+plot(subfeatures$Age,rf$votes[,2])
+boxplot(subfeatures[,1]~subfeatures$Sex)
+
+#tmp = fit$residuals
+tmp = fit3$residuals
 
 summary(fit)
 summary(fit1)
 summary(fit2)
 summary(fit3)
 tmp <- data.frame(tmp)
-tmp[grep("TRUE",subfeatures[,3]),2]<-"linearM_result_T"
-tmp[grep("FALSE",subfeatures[,3]),2]<-"linearM_result_F"
+tmp[grep("TRUE",subfeatures[,4]),2]<-"linearM_result_T"
+tmp[grep("FALSE",subfeatures[,4]),2]<-"linearM_result_F"
 rfvotes <-data.frame(rf$votes[,2])
-rfvotes[grep("TRUE",subfeatures[,3]),2] <-"True(rfvotes)"
-rfvotes[grep("FALSE",subfeatures[,3]),2] <-"False(rfvotes)"
+rfvotes[grep("TRUE",subfeatures[,4]),2] <-"True(rfvotes)"
+rfvotes[grep("FALSE",subfeatures[,4]),2] <-"False(rfvotes)"
 t<-matrix(0,ncol =2,nrow=1544)
 rfvotes[,1] <-tmp[,2]
 tmp[,2] <- rf$votes[,2]
